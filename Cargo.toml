@@ -1,0 +1,12 @@
+[package]
+name = "winservice"
+version = "0.1.0"
+authors = ["Maxi Fischer <maxi@gfc.strangled.net>"]
+
+description = "Run a Windows system service without hassle."
+documentation = "https://fischmax.github.io/doc/winservice"
+homepage = "https://github.com/fischmax/winservice"
+repository = "https://github.com/fischmax/winservice"
+readme = "README.md"
+keywords = ["windows", "service"]
+license = "Apache-2.0"
