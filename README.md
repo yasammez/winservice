@@ -3,7 +3,7 @@ winservice
 
 A very small Rust library to easily set up and run a Windows system service.
 
-[Documentation](#platforms-and-documentation)
+[Documentation](https://fischmax.github.io/doc/winservice/)
 
 ## Example Usage
 
@@ -42,6 +42,3 @@ fn service_main(args : Vec<String>, end : Receiver<()>) -> u32 {
         if let Ok(_) = end.try_recv() { break; } }
  0 }
 ```
-
-## Documentation
-  * [`x86_64-pc-windows-gnu`](https://fischmax.github.io/doc/winservice/)
