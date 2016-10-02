@@ -32,8 +32,7 @@ extern crate winservice;
 pub extern "system" fn WinMain(hInstance : *const c_void, hPrevInstance : *const c_void,
     lpCmdLine : *const c_char, nCmdShow : c_int) -> c_int
 {
-    Service!("myService", service_main);
-    0
+    Service!("myService", service_main)
 }
 
 fn service_main(args : Vec<String>, end : Receiver<()>) -> u32 {

@@ -58,8 +58,7 @@ use service_status::SERVICE_STATUS;
 /// pub extern "system" fn WinMain(hInstance : *const c_void, hPrevInstance : *const c_void,
 ///     lpCmdLine : *const c_char, nCmdShow : c_int) -> c_int
 /// {
-///     Service!("myService", service_main);
-///     0
+///     Service!("myService", service_main)
 /// }
 ///
 /// fn service_main(args : Vec<String>, end : Receiver<()>) -> u32 {
@@ -85,7 +84,7 @@ macro_rules! Service { ( $name:expr, $function:ident ) => { {
     use std::os::raw::{c_char, c_int};
     extern "C" fn wrapper(argc : c_int, argv : *const *const c_char) {
         winservice::dispatch($name, $function, argc, argv); }
-    winservice::serve(wrapper); } } }
+    return winservice::serve(wrapper); } } }
 
 /// This should never be directly called from the user.
 pub fn dispatch(name : &str, service_main : fn(Vec<String>, Receiver<()>) -> u32,
@@ -97,8 +96,8 @@ argc : c_int, argv : *const *const c_char) {
 }
 
 /// This should never be directly called from the user.
-pub fn serve(wrapper: extern "C" fn(c_int, *const *const c_char)) {
+pub fn serve(wrapper: extern "C" fn(c_int, *const *const c_char)) -> i32 {
     let table = SERVICE_TABLE_ENTRY::with_wrapper(wrapper);
-    unsafe { StartServiceCtrlDispatcherA(&table as *const SERVICE_TABLE_ENTRY); }
+    unsafe { return StartServiceCtrlDispatcherA(&table as *const SERVICE_TABLE_ENTRY); }
 }
 

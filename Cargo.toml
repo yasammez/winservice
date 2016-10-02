@@ -1,6 +1,6 @@
 [package]
 name = "winservice"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Maxi Fischer <maxi@gfc.strangled.net>"]
 
 description = "Run a Windows system service without hassle."
