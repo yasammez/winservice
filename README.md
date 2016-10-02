@@ -11,7 +11,7 @@ A very small Rust library to easily set up and run a Windows system service.
 
 ```toml
 [dependencies]
-winservice = "0.1.0"
+winservice = "0.1.1"
 ```
 
 `main.rs`:
